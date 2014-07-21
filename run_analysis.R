@@ -6,9 +6,19 @@ downloadSourceData <- function() {
     download.file(
       remoteUrl,
       localFilename,
-      method="curl"
+      method = "curl"
     )      
   }
 }
-
 downloadSourceData()
+
+extractSourceData <- function() {
+  dataDir <- "data"
+  unzip(
+    localFilename,
+    exdir = dataDir,
+    junkpaths = TRUE,
+    overwrite = FALSE
+  )
+}
+extractSourceData()
