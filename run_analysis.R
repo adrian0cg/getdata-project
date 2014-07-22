@@ -44,7 +44,7 @@ annotateOutputWithFactors <- function() {
     dataRelativePath(labelFilename),
     stringsAsFactors = TRUE
   )
-  activities <<- merge( output, outputLabels, by.y = "V1", all.x = TRUE)
+  output <<- merge( output, outputLabels, by.y = "V1", all.x = TRUE)$V2
 }
 annotateOutputWithFactors()
 
