@@ -1,7 +1,12 @@
 ## Code Book
-# group
-"subject"
-"activity"
+# `group`
+Textual description of the group aggregated on
+
+# `subject`
+Subject performing the activity
+
+# `activity`
+
 "timeseriesBodyAcceleration.mean.X.groupMean"
 "timeseriesBodyAcceleration.mean.Y.groupMean"
 "timeseriesBodyAcceleration.mean.Z.groupMean"
