@@ -103,6 +103,6 @@ prettifyNames <- function() {
 prettifyNames()
 
 spliceMeans <- function() {
-  harMeansStds <- harData[,grepl("(mean|std).{2}-",names(harData))]
+  harMeansStds <<- harData[,grepl("(mean|std).{2}-",names(harData))]
 }
 spliceMeans()
