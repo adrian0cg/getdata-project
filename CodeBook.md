@@ -8,12 +8,12 @@ ID of the test subject performing the activity
 # `activity`
 One of the factors:
 
-* WALKING
-* WALKING_UPSTAIRS
-* WALKING_DOWNSTAIRS
-* SITTING
-* STANDING
-* LAYING
+* `WALKING`
+* `WALKING_UPSTAIRS`
+* `WALKING_DOWNSTAIRS`
+* `SITTING`
+* `STANDING`
+* `LAYING`
 
 # source data
 averages over the mean/standard deviation secondary variables from the source data:

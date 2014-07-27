@@ -10,4 +10,4 @@ This contains a file `run_analysis.R` that
 6. prettifies the variable names
 7. slices the desired Mean/Standard deviation variables form the full data set
 8. performs a group-wise mean over the (subject,activity) combinations
-9. wirtes out the result of the aggregation into a file called {tidyGroupMeans.txt}
+9. wirtes out the result of the aggregation into a file called `tidyGroupMeans.txt`
