@@ -102,7 +102,19 @@ prettifyNames <- function() {
 }
 prettifyNames()
 
-spliceMeans <- function() {
-  harMeansStds <<- harData[,grepl("(mean|std).{2}-",names(harData))]
+spliceMeansStddevs <- function() {
+  harMeansStddevs <<- harData[,c(1,grep("(mean|std).{2}-",names(harData)),563)]
 }
-spliceMeans()
+spliceMeansStddevs()
+
+aggregateMeanForSubjectActivityGroups <- function () {
+  subjectActivityMeans <<- aggregate(harMeansStddevs[,2:49],list(harData$subject, harData$activity),mean)
+  names(subjectActivityMeans)[1:2] <<- c("subject","activity")
+  #names(subjectActivityMeans)[3:50] <<- gsub("(.+)\.(mean|std)\.+[XYZ]","mean.\1.\2.\3",names(subjectActivityMeans)[3:50])
+  groupNames <<- sprintf("subject %i performing activity: %s", subjectActivityMeans$subject, subjectActivityMeans$activity)
+  tidySubjectActivityMeansOfMeansStddevs <<- data.frame(group=groupNames,subjectActivityMeans)
+  names(tidySubjectActivityMeansOfMeansStddevs) <<- sub("...",".",fixed=TRUE,names(tidySubjectActivityMeansOfMeansStddevs))
+  names(tidySubjectActivityMeansOfMeansStddevs)[4:50] <<- paste(names(tidySubjectActivityMeansOfMeansStddevs)[4:50],"groupMean",sep=".")
+}
+aggregateMeanForSubjectActivityGroups()
+
