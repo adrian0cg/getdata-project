@@ -118,3 +118,12 @@ aggregateMeanForSubjectActivityGroups <- function () {
 }
 aggregateMeanForSubjectActivityGroups()
 
+writeTidyProjectData <- function() {
+  tidyFilename <- "tidyGroupMeans.txt"
+  write.table(
+    tidySubjectActivityMeansOfMeansStddevs,
+    file = dataRelativePath(tidyFilename),
+    row.names = FALSE
+  )
+}
+writeTidyProjectData()
