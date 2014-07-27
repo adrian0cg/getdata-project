@@ -1,6 +1,6 @@
 ## Coursera DataScience "Getting and Cleaning Data"-Project
 
-This contains a file {run_analysis.R} that
+This contains a file `run_analysis.R` that
 
 1. downloads the source data
 2. loads source data
