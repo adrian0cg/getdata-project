@@ -35,7 +35,7 @@ readOutputData <- function() {
   if (!exists("output") || is.null(output) || length(output) != 10299) {
     testOutput <- read.table( dataRelativePath(testOutputFilename))
     trainOutput <- read.table( dataRelativePath(trainOutputFilename))
-    output <<- rbind(trainOutput, testOutput)
+    rawOutput <<- rbind(trainOutput, testOutput)
   }
 }
 readOutputData()
@@ -51,7 +51,7 @@ annotateOutputWithFactors <- function() {
       dataRelativePath(labelFilename),
       stringsAsFactors = TRUE
     )
-    output <<- merge( output, outputLabels, by.y = "V1", all.x = TRUE)$V2
+    output <<- merge( rawOutput, outputLabels, by.y = "V1", all.x = TRUE)$V2
   }
 }
 annotateOutputWithFactors()
@@ -68,4 +68,28 @@ readInputData <- function() {
 }
 readInputData()
 
-harData <- cbind(input, output)
+readSubjects <- function() {
+  testSubjectFilename <- "subject_test.txt"
+  trainSubjectFilename <- "subject_train.txt"
+  if (!exists("subjects") || is.null(subjects) || length(subjects) != 10299) {
+    testSubjects <- read.table( dataRelativePath(testSubjectFilename))
+    trainSunjects <- read.table( dataRelativePath(trainSubjectFilename))
+    subjects <<- rbind(testSubjects, trainSunjects)
+  }
+}
+readSubjects()
+
+harData <- cbind(subjects, input, output)
+
+annotate <- function() {  
+  featureFilename <- "features.txt"
+  featureNames <- read.table( dataRelativePath(featureFilename))
+  variableNames <- c("subject", as.character(featureNames[,2]), "activity")
+  names(harData) <<- variableNames
+}
+annotate()
+
+spliceMeans <- function() {
+  harMeansStds <- harData[,grepl("(mean|std).{2}-",names(harData))]
+}
+spliceMeans()
