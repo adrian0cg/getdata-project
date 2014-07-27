@@ -89,6 +89,19 @@ annotate <- function() {
 }
 annotate()
 
+prettifyNames <- function() {
+  harNames <- names(harData)
+  harNamesT <- sub("^t","timeseries", harNames)
+  harNamesTS <- sub("^f","freqency", harNamesT)
+  harNamesTSAcc <- sub("Acc","Acceleration", harNamesTS)
+  harNamesTSAccGyro <- sub("Gyro","AngularMomentum", harNamesTSAcc)
+  harNamesTSAccGyroMag <- sub("Mag","Magnitude", harNamesTSAccGyro)
+  harNamesTSAccGyroMagBody <- sub("BodyBody","Body", harNamesTSAccGyroMag)
+  harPrettyNames <- harNamesTSAccGyroMagBody
+  names(harData) <<- harPrettyNames
+}
+prettifyNames()
+
 spliceMeans <- function() {
   harMeansStds <- harData[,grepl("(mean|std).{2}-",names(harData))]
 }
